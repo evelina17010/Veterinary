@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0a444e571a7b43148c00384133a5a281" Name="Diagram1">
+        <EntityTypeShape EntityType="VeterinaryClinicModel.Animals" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinaryClinicModel.AnimalType" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinaryClinicModel.Appointments" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinaryClinicModel.Doctors" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinaryClinicModel.Gender" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinaryClinicModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinaryClinicModel.TypeDoctor" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VeterinaryClinicModel.User" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="VeterinaryClinicModel.FK__Animals__id_gend__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinaryClinicModel.FK__Animals__id_type__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinaryClinicModel.FK__Appointme__anima__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinaryClinicModel.FK__Appointme__docto__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinaryClinicModel.FK__Doctors__id_type__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="VeterinaryClinicModel.FK_User_Doctors" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
