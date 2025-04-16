@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,36 +40,28 @@ namespace Veterinary.Win
             lvAppointments.ItemsSource = appointments;
             this.DataContext = this;
         }
-
-        private void ApplyFilters()
+       
+        private void btnApplyFilter_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (!_user.id_doctors.HasValue) return;
-
                 var query = DB.vet.Appointments.Where(a => a.doctor_id == _user.id_doctors && a.is_deleted == false);
-
                 if (dpDateTo.SelectedDate.HasValue)
                 {
-                    query = query.Where(a => a.appointment_date == dpDateTo.SelectedDate.Value);
+                    var filter = dpDateTo.SelectedDate.Value.Date;
+                    appointments = appointments.Where(a => a.appointment_date.Date == filter).ToList();
                 }
-                if (txtAnimalSearch.Text!=null)
+                else
                 {
-                    var searchText = txtAnimalSearch.Text.ToLower();
-                    query = query.Where(a => a.Animals.name.ToLower().Contains(searchText));
+                    LoadAppointments();
                 }
-                appointments = query.ToList();
-                lvAppointments.ItemsSource = appointments;
+                    lvAppointments.ItemsSource = appointments.ToList();               
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка при применении фильтров: {ex.Message}", "Ошибка",
                               MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-        private void btnApplyFilter_Click(object sender, RoutedEventArgs e)
-        {
-            ApplyFilters();
         }
 
         private void btnAddAppointment_Click(object sender, RoutedEventArgs e)
@@ -121,7 +115,14 @@ namespace Veterinary.Win
 
         private void txtAnimalSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ApplyFilters();
+            var query = DB.vet.Appointments.Where(a => a.doctor_id == _user.id_doctors && a.is_deleted == false);
+            if (txtAnimalSearch.Text != null)
+            {
+                var searchText = txtAnimalSearch.Text.ToLower();
+                query = query.Where(a => a.Animals.name.ToLower().Contains(searchText));
+            }
+            appointments = query.ToList();
+            lvAppointments.ItemsSource = appointments;
         }
 
         private void lvAppointments_SelectionChanged(object sender, SelectionChangedEventArgs e)
