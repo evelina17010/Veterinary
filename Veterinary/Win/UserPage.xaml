@@ -47,6 +47,7 @@
                     <GridViewColumn Header="Дата" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
+                                
                                 <TextBlock Text="{Binding appointment_date, StringFormat={}{0:dd.MM.yyyy}}"/>
                             </DataTemplate>
                             
